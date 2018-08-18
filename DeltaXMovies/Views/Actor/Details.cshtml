@@ -1,0 +1,49 @@
+﻿@model DeltaXMovies.Models.Actor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Actor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ActorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActorBio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActorBio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActorDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActorDOB)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ActorSex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActorSex)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ActorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

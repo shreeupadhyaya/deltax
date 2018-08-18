@@ -1,0 +1,83 @@
+﻿@model DeltaXMovies.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+    var base64 = Model.MoviePoster != null ? Convert.ToBase64String(Model.MoviePoster) : string.Empty;
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviePlot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoviePlot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieYOR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieYOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieProducerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MovieProducer.ProducerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieActorIds)
+        </dt>
+
+
+        <dd >
+            @if (Model.MovieActors != null && Model.MovieActors.Count > 0)
+            {
+            <table cellpadding="10" cellspacing="10">
+                <thead><tr><th>Actor Name</th><th>Actor DOB</th></tr></thead>
+                @foreach (var actor in Model.MovieActors)
+                {
+                    <tr><td>@actor.ActorName</td><td>@actor.ActorDOB.ToShortDateString()</td></tr>
+                }
+            </table>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoviePoster)
+        </dt>
+        <dd >
+            <div >
+
+                @if (!string.IsNullOrEmpty(imgSrc))
+                {
+                    <img src="@imgSrc" />
+                }
+            </div>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
